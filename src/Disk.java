@@ -1,3 +1,6 @@
+/**
+ * Диск заданного размера
+ */
 public class Disk {
     private final int size;
 
