@@ -48,7 +48,7 @@ public class Peg {
      */
     public void push(Disk disk) {
         System.out.printf("Диск %d помещен на стержень %c%n", disk.getSize(), name);
-        if (disk.getSize()>disks.getLast().getSize()) {
+        if (!disks.isEmpty() && disk.getSize()>disks.getLast().getSize()) {
             throw new WrongDiskSizeException(
                     String.format( "Диск размером %d, помещаемый на стержень %c, " +
                             " больше предыдущего диска размером %d",
@@ -63,7 +63,7 @@ public class Peg {
      * @return Disk верхний диск на стержне
      */
     public Disk pop() {
-        if (!disks.isEmpty()) {
+        if (disks.isEmpty()) {
             throw new IllegalStateException("На стержне не осталось дисков!");
         }
         Disk disk = disks.removeLast();
