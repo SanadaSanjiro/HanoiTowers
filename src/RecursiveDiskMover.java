@@ -1,7 +1,7 @@
 public class RecursiveDiskMover {
-    private final PegStatePrinter printer;
+    private final PegStateDisplay printer;
 
-    public RecursiveDiskMover(PegStatePrinter printer) {
+    public RecursiveDiskMover(PegStateDisplay printer) {
         this.printer = printer;
     }
 

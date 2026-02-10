@@ -1,4 +1,3 @@
-import java.awt.*;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -9,8 +8,9 @@ public class Peg {
     private final LinkedList<Disk> disks = new LinkedList<>();
     private final char name;
 
-    public Peg(int diskStackSize, char name) {
-        for (int i = diskStackSize; i>0; i--) {
+    public Peg(int diskAmount, char name) {
+        // Помещаем на стержень заданное количество дисков начиная с самого большого
+        for (int i = diskAmount; i>0; i--) {
             Disk disk = new Disk(i);
             disks.addLast(disk);
         }
@@ -18,7 +18,7 @@ public class Peg {
     }
 
     /**
-     * Получить количесвто дисков на стержне
+     * Получить количество дисков на стержне
      * @return int текущее количество дисков, помещенных на стержень
      */
     public int getDiskStackSize() {
@@ -47,12 +47,12 @@ public class Peg {
      * @param disk Disk, который требуется поместить на стержень.
      */
     public void push(Disk disk) {
-        System.out.printf("Диск %d помещен на стержень %c%n", disk.getSize(), name);
-        if (!disks.isEmpty() && disk.getSize()>disks.getLast().getSize()) {
+        System.out.printf("Диск %d помещен на стержень %c%n", disk.r(), name);
+        if (!disks.isEmpty() && disk.r()>disks.getLast().r()) {
             throw new WrongDiskSizeException(
                     String.format( "Диск размером %d, помещаемый на стержень %c, " +
                             " больше предыдущего диска размером %d",
-                            disk.getSize(), name, disks.getLast().getSize()));
+                            disk.r(), name, disks.getLast().r()));
         }
         disks.addLast(disk);
     }
@@ -67,7 +67,7 @@ public class Peg {
             throw new IllegalStateException("На стержне не осталось дисков!");
         }
         Disk disk = disks.removeLast();
-        System.out.printf("Диск %d снят со стержня %c%n", disk.getSize(), name);
+        System.out.printf("Диск %d снят со стержня %c%n", disk.r(), name);
         return disk;
     }
 }
