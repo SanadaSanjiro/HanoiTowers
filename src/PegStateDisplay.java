@@ -4,7 +4,7 @@ import java.util.List;
  * Класс отображает текущее состояние стержней с надетыми на них дисками
  */
 public class PegStateDisplay {
-    private final char[][] display;
+    private final char[][] display; // массив, формирующий картинку со стержнями и дисками на них
     private final char PEG_SYMBOL = '▓'; // Чем отрисовывать диски
     private final int high, width;
     private final int peg1Position, peg2Position, peg3Position; // Позиции стержней по оси x

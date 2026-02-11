@@ -2,7 +2,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 /**
- * Стержень, на который надеваются диски
+ * Класс, моделирующий стержень, на который надеваются диски
  */
 public class Peg {
     private final LinkedList<Disk> disks = new LinkedList<>();
