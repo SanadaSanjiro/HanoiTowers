@@ -2,7 +2,7 @@ public class Main {
     public static void main(String[] args) {
         int diskNumber; // количество дисков, которые нужно переместить между стержнями
         if (args.length> 0) {
-            diskNumber = Integer.getInteger(args[0]);
+            diskNumber = Integer.parseInt(args[0]);
         } else {
             diskNumber = 5;
         }
