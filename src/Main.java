@@ -1,21 +1,12 @@
 public class Main {
     public static void main(String[] args) {
-        int diskNumber; // количество дисков, которые нужно переместить между стержнями
-        if (args.length> 0) {
-            diskNumber = Integer.parseInt(args[0]);
-        } else {
-            diskNumber = 5;
-        }
-
-        Peg peg1 = new Peg(diskNumber, 'A'); // Создаем стержень с заданным числом дисков и два пустых
+        int diskNumber = 5;
+        Peg peg1 = new Peg(diskNumber, 'A');
         Peg peg2 = new Peg(0, 'B');
         Peg peg3 = new Peg(0, 'C');
-
-        PegStateDisplay pg = new PegStateDisplay(peg1, peg2, peg3); // Создаем объект для отображения состояния стойки
-
-        pg.draw();  // Отрисовываем стойку
-
+        PegPrinter pg = new ConsolePegPrinter(peg1, peg2, peg3);
+        pg.draw();
         RecursiveDiskMover mover = new RecursiveDiskMover(pg);
-        mover.moveDisks(peg1, peg3, peg2, diskNumber); // Запускаем рекурсивный метод для перемещения дисков между стержнями
+        mover.moveDisks(peg1, peg3, peg2, diskNumber);
     }
 }

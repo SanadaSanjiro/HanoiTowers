@@ -3,7 +3,7 @@ import java.util.List;
 /**
  * Класс отображает текущее состояние стержней с надетыми на них дисками
  */
-public class PegStateDisplay {
+public class ConsolePegPrinter implements PegPrinter {
     private final char[][] display; // массив, формирующий картинку со стержнями и дисками на них
     private final char PEG_SYMBOL = '▓'; // Чем отрисовывать диски
     private final int high, width;
@@ -11,7 +11,7 @@ public class PegStateDisplay {
     private final Peg peg1, peg2, peg3;
     private final StringBuilder sb = new StringBuilder();
 
-    public PegStateDisplay(Peg peg1, Peg peg2, Peg peg3) {
+    public ConsolePegPrinter(Peg peg1, Peg peg2, Peg peg3) {
         // Создаем массив с высотой, равной числу дисков и шириной, равной тройной ширине самого широкого диска
         int diskStackSize = peg1.getDiskStackSize() + peg2.getDiskStackSize() + peg3.getDiskStackSize();
 

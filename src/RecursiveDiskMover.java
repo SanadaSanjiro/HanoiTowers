@@ -1,30 +1,19 @@
-/**
- * Класс, предоставляющий рекурсивный метод для решения головоломки про ханойские башенки
- */
 public class RecursiveDiskMover {
-    private final PegStateDisplay printer; // объект, отображающий состояние стержней и дисков на каждом шаге в консоли
+    private final PegPrinter printer;
 
-    public RecursiveDiskMover(PegStateDisplay printer) {
+    public RecursiveDiskMover(PegPrinter printer) {
         this.printer = printer;
     }
 
-    /**
-     * Рекурсивный метод, перемещающий диски между заданными стержнями
-     * @param from Peg стержень, на котором помещены диски
-     * @param to Peg стержень, на которые нужно перенести диски
-     * @param aux Peg вспомогательный стержень
-     * @param n число дисков, которые нужно переместить. При первоначальном запуске равно количеству дисков на первом стержне
-     */
     public void moveDisks(Peg from, Peg to, Peg aux, int n) {
-        // Если нужно переместить 1 диск - просто перекладываем его на нужный стержень
         if (n==1) {
             Disk disk = from.pop();
             to.push(disk);
             printer.draw();
-        } else { // Если перемещается больше одного диска
-            moveDisks(from, aux, to, n - 1);  // переносим n-1 диск на вспомогательный стержень
-            moveDisks(from, to, aux, 1);      // переносим 1 диск на конечный стержень
-            moveDisks(aux, to, from, n - 1);  // переносим диски, помещенные ранее на вспомогательный стержень, на конечный
+        } else {
+            moveDisks(from, aux, to, n - 1);
+            moveDisks(from, to, aux, 1);
+            moveDisks(aux, to, from, n - 1);
         }
     }
 }
